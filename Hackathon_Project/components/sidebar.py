@@ -49,10 +49,8 @@ def sidebar_item(text: str, url: str) -> rx.Component:
             rx.match(
                 text,
                 ("Overview", sidebar_item_icon("home")),
-                ("Parkinsons", sidebar_item_icon("home")),
-                ("Table", sidebar_item_icon("table-2")),
-                ("About", sidebar_item_icon("book-open")),
-                ("Profile", sidebar_item_icon("user")),
+                ("Parkinsons", sidebar_item_icon("info")),
+                ("Stutter", sidebar_item_icon("info")),
                 ("Settings", sidebar_item_icon("settings")),
                 sidebar_item_icon("layout-dashboard"),
             ),
@@ -107,9 +105,7 @@ def sidebar() -> rx.Component:
     ordered_page_routes = [
         "/",
         "/parkinson",
-        "/table",
-        "/about",
-        "/profile",
+        "/stutter",
         "/settings",
     ]
 

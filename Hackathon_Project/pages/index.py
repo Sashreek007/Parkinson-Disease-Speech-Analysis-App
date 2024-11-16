@@ -4,17 +4,9 @@ import reflex as rx
 from .. import styles
 from ..templates import template
 from ..views.stats_cards import stats_cards
-from ..views.charts import (
-    users_chart,
-    revenue_chart,
-    orders_chart,
-    area_toggle,
-    StatsState,
-)
 
-from ..components.notification import notification
+
 from ..components.card import card
-from .profile import ProfileState
 import datetime
 
 
@@ -34,14 +26,13 @@ def _time_data() -> rx.Component:
 def tab_content_header() -> rx.Component:
     return rx.hstack(
         _time_data(),
-        area_toggle(),
         align="center",
         width="100%",
         spacing="4",
     )
 
 
-@template(route="/", title="Overview", on_load=StatsState.randomize_data)
+@template(route="/", title="About")
 def index() -> rx.Component:
     """The overview page.
 
@@ -49,41 +40,16 @@ def index() -> rx.Component:
         The UI for the overview page.
     """
     return rx.vstack(
-        rx.heading(f"Welcome, {ProfileState.profile.name}", size="5"),
         rx.flex(
-            rx.flex(
-                rx.button("Audio Input"),
-                notification("bell", "cyan", 12),
-                notification("message-square-text", "plum", 6),
-                spacing="4",
-                width="100%",
-                wrap="nowrap",
-                justify="end",
-            ),
             justify="between",
             align="center",
             width="100%",
         ),
-        stats_cards(),
         card(
             rx.hstack(
                 tab_content_header(),
-                rx.segmented_control.root(
-                    rx.segmented_control.item("Users", value="users"),
-                    rx.segmented_control.item("Revenue", value="revenue"),
-                    rx.segmented_control.item("Orders", value="orders"),
-                    margin_bottom="1.5em",
-                    default_value="users",
-                    on_change=StatsState.set_selected_tab,
-                ),
                 width="100%",
                 justify="between",
-            ),
-            rx.match(
-                StatsState.selected_tab,
-                ("users", users_chart()),
-                ("revenue", revenue_chart()),
-                ("orders", orders_chart()),
             ),
         ),
         spacing="8",

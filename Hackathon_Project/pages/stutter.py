@@ -7,23 +7,21 @@ from ..views.stats_cards import stats_cards
 import datetime
 
 from ..components.card import card
-from ..backend.Park_State import ParkState
+from ..backend.Stutter_State import StutterState
 
 def tab_content_header() -> rx.Component:
     return rx.hstack(
-        rx.text("""Parkinson’s
+        rx.text("""Stuttering
 Treatment: 
-For mild cases of parkinson’s treatment can include certain medications such as Levodopa, which is considered the most effective parkinson’s disease medicine, in combination with Caribidopa which can reduce the side effects that often come with Levodopa. Other medications are split into three categories: dopamine agonists, Monoamine oxidase B inhibitors, and Catechol O-methyltransferase inhibitors. With some possible medication being rotigotine, pramipexole, rasagiline, selegiline and more. Alternatively, other solutions incorporate regular exercise, a healthy and balanced diet, and physical and occupational therapy.
-
-For more severe cases surgical treatments such as deep brain stimulation(DBS) can be considered. DBS involves specific placement of electrodes within the brain to control and reduce motor issues like tremors, and dyskinesia, that is involuntary muscle movements.
+Currently there is no specific medication that has been proven to help this condition however alternative solutions such as treatments for stuttering include speech therapy, cognitive behavioral therapy, and electronic devices. All these treatments focus on allowing an individual to show their speech or decrease possible anxiety and stress which can make stuttering worse. Some exploratory methods that are being tested are the use of virtual reality and computer based programs to simulate social environments. This will allow the individual to practice in a controlled environment and reduce anxiety.
 """, size="2", weight="medium"),
         align="center",
         spacing="2",
         display=["none", "none", "flex"],
     )
 
-@template(route="/parkinson", title="Parkinson")
-def parkinson() -> rx.Component:
+@template(route="/stutter", title="Stutter")
+def stutter() -> rx.Component:
     """The overview page.
 
     Returns:
@@ -32,7 +30,7 @@ def parkinson() -> rx.Component:
     
     return rx.vstack(
         rx.flex(
-            rx.heading("Parkinson's Health Status Prediction"),
+            rx.heading("Stutter Health Status Prediction"),
             rx.upload(
                 rx.vstack(
                     rx.button(
@@ -54,11 +52,11 @@ def parkinson() -> rx.Component:
             ),
             rx.button(
                 "Process Audio",
-                on_click=ParkState.handle_upload(
+                on_click=StutterState.handle_upload(
                     rx.upload_files(upload_id="audio_upload")
                 ),
             ),
-            rx.heading(ParkState.prediction),
+            rx.heading(StutterState.prediction),
             justify="between",
             align="center",
             width="100%",

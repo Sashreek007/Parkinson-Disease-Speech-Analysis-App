@@ -29,10 +29,8 @@ def menu_item(text: str, url: str) -> rx.Component:
             rx.match(
                 text,
                 ("Overview", menu_item_icon("home")),
-                ("Parkinsons", menu_item_icon("home")),
-                ("Table", menu_item_icon("table-2")),
-                ("About", menu_item_icon("book-open")),
-                ("Profile", menu_item_icon("user")),
+                ("Parkinsons", menu_item_icon("info")),
+                ("Stutter", menu_item_icon("info")),
                 ("Settings", menu_item_icon("settings")),
                 menu_item_icon("layout-dashboard"),
             ),
@@ -81,9 +79,7 @@ def menu_button() -> rx.Component:
     ordered_page_routes = [
         "/",
         "/parkinson",
-        "/table",
-        "/about",
-        "/profile",
+        "/stutter",
         "/settings",
     ]
 
@@ -150,11 +146,6 @@ def navbar() -> rx.Component:
 
     return rx.el.nav(
         rx.hstack(
-            # The logo.
-            rx.color_mode_cond(
-                rx.image(src="/reflex_black.svg", height="1em"),
-                rx.image(src="/reflex_white.svg", height="1em"),
-            ),
             rx.spacer(),
             menu_button(),
             align="center",

@@ -68,7 +68,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve')
 plt.legend()
-plt.show()
+
 
 # Feature extraction for audio files (18 features)
 def extract_features(audio_path):
