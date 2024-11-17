@@ -24,4 +24,8 @@ Parkinson's Disease (PD) can impact speech patterns. Early detection of PD is cr
 - Joblib
 - Matplotlib
 
-Use the following command to run the app:
+You can run the app using 
+
+```bash
+reflex init
+reflex run
