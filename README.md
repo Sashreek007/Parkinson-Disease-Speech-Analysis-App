@@ -1,4 +1,4 @@
-# SpeechReclaim: Parkinson's Disease Speech Diagnostics
+# ![SpeechReclaim Logo](assets/logo.png) SpeechReclaim: Parkinson's Disease Speech Diagnostics
 
 This repository contains the code for **SpeechReclaim**, a machine learning project aimed at developing a diagnostic tool for Parkinson's Disease using speech analysis. The model utilizes voice features extracted from audio recordings to classify individuals as healthy or potentially affected by Parkinson's.
 
