@@ -9,19 +9,7 @@ import datetime
 from ..components.card import card
 from ..backend.Park_State import ParkState
 
-def tab_content_header() -> rx.Component:
-    return rx.hstack(
-        rx.text("""Parkinson’s
-Treatment: 
-For mild cases of parkinson’s treatment can include certain medications such as Levodopa, which is considered the most effective parkinson’s disease medicine, in combination with Caribidopa which can reduce the side effects that often come with Levodopa. Other medications are split into three categories: dopamine agonists, Monoamine oxidase B inhibitors, and Catechol O-methyltransferase inhibitors. With some possible medication being rotigotine, pramipexole, rasagiline, selegiline and more. Alternatively, other solutions incorporate regular exercise, a healthy and balanced diet, and physical and occupational therapy.
 
-For more severe cases surgical treatments such as deep brain stimulation(DBS) can be considered. DBS involves specific placement of electrodes within the brain to control and reduce motor issues like tremors, and dyskinesia, that is involuntary muscle movements.
-""", size="4", weight="medium",align="center"),
-        align="center",
-        justify="between",
-        spacing="2",
-        display=["none", "none", "flex"],
-    )
 
 @template(route="/parkinson", title="Parkinson's Speech Disorder")
 def parkinson() -> rx.Component:
@@ -34,6 +22,9 @@ def parkinson() -> rx.Component:
     return rx.vstack(
         rx.flex(
             rx.vstack(  # Wrap content in vstack for vertical alignment
+                rx.spacer(),
+                rx.spacer(),
+                rx.spacer(),
                 rx.heading("Parkinson's Health Status Prediction"),
                 rx.upload(
                     rx.vstack(
@@ -55,7 +46,7 @@ def parkinson() -> rx.Component:
                 },
                 multiple=False,
                 border="1px dotted rgb(107,99,246)", 
-                padding="5em",
+                padding="10em",
             ),
                 rx.button(
                     "Process Audio",
@@ -71,11 +62,6 @@ def parkinson() -> rx.Component:
             justify="center",  # Centers the vstack in the flex container
             align="center",    # Centers items vertically
     ),
-        card(
-            rx.hstack(
-                tab_content_header(),
-            ),
-        ),
         spacing="8",
         width="100%",
         justify="between",
