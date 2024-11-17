@@ -13,10 +13,6 @@ def sidebar_header() -> rx.Component:
     """
     return rx.hstack(
         # The logo.
-        rx.color_mode_cond(
-            rx.image(src="/reflex_black.svg", height="1.5em"),
-            rx.image(src="/reflex_white.svg", height="1.5em"),
-        ),
         rx.spacer(),
         align="center",
         width="100%",
@@ -24,6 +20,20 @@ def sidebar_header() -> rx.Component:
         margin_bottom="1em",
     )
 
+def sidebar_footer() -> rx.Component:
+    """Sidebar footer.
+
+    Returns:
+        The sidebar footer component.
+    """
+    return rx.hstack(
+        rx.spacer(),
+        rx.color_mode.button(style={"opacity": "0.8", "scale": "0.95"}),
+        justify="start",
+        align="center",
+        width="100%",
+        padding="0.35em",
+    )
 
 def sidebar_item_icon(icon: str) -> rx.Component:
     return rx.icon(icon, size=18)
@@ -50,7 +60,6 @@ def sidebar_item(text: str, url: str) -> rx.Component:
                 text,
                 ("Overview", sidebar_item_icon("home")),
                 ("Parkinsons", sidebar_item_icon("info")),
-                ("Stutter", sidebar_item_icon("info")),
                 ("Settings", sidebar_item_icon("settings")),
                 sidebar_item_icon("layout-dashboard"),
             ),
@@ -105,7 +114,6 @@ def sidebar() -> rx.Component:
     ordered_page_routes = [
         "/",
         "/parkinson",
-        "/stutter",
         "/settings",
     ]
 

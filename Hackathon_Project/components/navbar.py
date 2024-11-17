@@ -30,7 +30,6 @@ def menu_item(text: str, url: str) -> rx.Component:
                 text,
                 ("Overview", menu_item_icon("home")),
                 ("Parkinsons", menu_item_icon("info")),
-                ("Stutter", menu_item_icon("info")),
                 ("Settings", menu_item_icon("settings")),
                 menu_item_icon("layout-dashboard"),
             ),
@@ -71,6 +70,21 @@ def menu_item(text: str, url: str) -> rx.Component:
         width="100%",
     )
 
+def navbar_footer() -> rx.Component:
+    """Navbar footer.
+
+    Returns:
+        The navbar footer component.
+    """
+    return rx.hstack(
+        rx.spacer(),
+        rx.color_mode.button(style={"opacity": "0.8", "scale": "0.95"}),
+        justify="start",
+        align="center",
+        width="100%",
+        padding="0.35em",
+    )
+
 def menu_button() -> rx.Component:
     # Get all the decorated pages and add them to the menu.
     from reflex.page import get_decorated_pages
@@ -79,7 +93,6 @@ def menu_button() -> rx.Component:
     ordered_page_routes = [
         "/",
         "/parkinson",
-        "/stutter",
         "/settings",
     ]
 

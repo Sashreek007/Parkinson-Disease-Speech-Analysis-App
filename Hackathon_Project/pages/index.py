@@ -11,15 +11,11 @@ import datetime
 
 
 def _time_data() -> rx.Component:
-    return rx.hstack(
-        rx.tooltip(
-            rx.icon("info", size=20),
-            content=f"{(datetime.datetime.now() - datetime.timedelta(days=30)).strftime('%b %d, %Y')} - {datetime.datetime.now().strftime('%b %d, %Y')}",
-        ),
-        rx.text("Last 30 days", size="4", weight="medium"),
+    return rx.vstack(
+        rx.text("""About The Project""", size="8", weight="medium", underlined="always"),
+        rx.text("""SpeechReclaim is a software that takes in user input for a set of diseases and computes whether the user is suffering from a neurological speech disorder or not. The neurological disorders that this software currently focuses on are Parkinson's speech disorder, Stuttering, and Aphasia. Based on the prediction about the disease, a vital feature that we aim at implementing is an AI chatbot which gives a long term training plan suggestion to the user which can potentially help them combat or overcome their disorder.""", size="5", weight="medium",align="center"),
         align="center",
         spacing="2",
-        display=["none", "none", "flex"],
     )
 
 
